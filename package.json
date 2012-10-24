@@ -1,6 +1,6 @@
 {
     "name": "brucedown"
-  , "version": "0.0.0"
+  , "version": "0.0.1"
   , "description": "A near-perfect GitHub style Markdown to HTML converter"
   , "main": "index.js"
   , "scripts": {
@@ -11,9 +11,9 @@
       , "url": "https://github.com/rvagg/node-brucedown.git"
     }
   , "dependencies": {
-        "async": "*"
-      , "marked": "*"
-      , "pygmentize-bundled": "*"
+        "async": "~0.1.22"
+      , "marked": "~0.2.5"
+      , "pygmentize-bundled": "~1.0.0"
     }
   , "keywords": [
         "markdown"

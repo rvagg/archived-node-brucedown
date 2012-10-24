@@ -24,12 +24,13 @@ Processor.prototype.highlight = function(code, lang) {
 Processor.prototype.process = function (callback) {
   var html         = marked(this.source + '\n')
     , newCodeCache = {}
+
   async.map(
       this.blocks
     , function (block, callback) {
         var key = block.lang + block.code
         if (codeCache[key]) return callback(null, newCodeCache[key] = codeCache[key])
-        pygmentize(block.lang, 'html', block.code, function (err, html) {
+        pygmentize({ lang: block.lang, format: 'html' }, block.code, function (err, html) {
           if (err) return callback(err)
           callback(null, newCodeCache[key] = html)
         })
@@ -44,6 +45,7 @@ Processor.prototype.process = function (callback) {
         callback(null, html)
       }
   )
+
   return this
 }
 
