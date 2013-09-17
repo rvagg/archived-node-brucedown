@@ -1,4 +1,4 @@
-var async      = require('async')
+var map        = require('map-async')
   , marked     = require('marked')
   , pygmentize = require('pygmentize-bundled')
 
@@ -25,7 +25,7 @@ Processor.prototype.process = function (callback) {
   var html         = marked(this.source + '\n')
     , newCodeCache = {}
 
-  async.map(
+  map(
       this.blocks
     , function (block, callback) {
         var key = block.lang + block.code

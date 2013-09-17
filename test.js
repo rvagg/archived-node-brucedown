@@ -8,7 +8,7 @@ var assert = require('assert')
         }
       , {
             input: '```c\nbool a = true;\n```'
-          , output: '<div class="highlight"><pre><span class="n">bool</span> <span class="n">a</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span></pre></div>'
+          , output: '<div class="highlight"><pre><span class="kt">bool</span> <span class="n">a</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span></pre></div>'
         }
       , {
             input: '#Foo!\n##bar\n`bang`\n\nboom'
@@ -18,7 +18,6 @@ var assert = require('assert')
 
 cases.forEach(function (c) {
   brucedown(c.input, function (err, result) {
-    //console.log(result)
     assert.equal(err, null)
     result = result.toString().replace(/\n/g, '')
     assert.equal(result, c.output)
