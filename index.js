@@ -16,8 +16,8 @@ function Processor (source) {
 }
 
 Processor.prototype.highlight = function(code, lang) {
-  if (!lang) return code
-  this.blocks.push({ code: code, lang: lang })
+  if (typeof lang != 'string') return code
+  this.blocks.push({ code: code, lang: lang.toLowerCase() })
   return '<CODEBLOCK id="' + this.blocks.length + '"/>'
 }
 

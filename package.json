@@ -1,6 +1,6 @@
 {
     "name": "brucedown"
-  , "version": "0.1.0"
+  , "version": "0.1.1"
   , "description": "A near-perfect GitHub style Markdown to HTML converter"
   , "main": "index.js"
   , "scripts": {
