@@ -15,36 +15,51 @@ function Processor (source) {
   })
 }
 
-Processor.prototype.highlight = function(code, lang) {
+Processor.prototype.highlight = function(code, lang, callback) {
   if (typeof lang != 'string') return code
   this.blocks.push({ code: code, lang: lang.toLowerCase() })
-  return '<CODEBLOCK id="' + this.blocks.length + '"/>'
+  process.nextTick(function () {
+    callback(null, '<CODEBLOCK id="' + this.blocks.length + '"/>')
+  }.bind(this))
 }
 
 Processor.prototype.process = function (callback) {
-  var html         = marked(this.source + '\n')
-    , newCodeCache = {}
+  function rewrite (err, html) {
+    if (err)
+      return callback(err)
 
-  map(
-      this.blocks
-    , function (block, callback) {
-        var key = block.lang + block.code
-        if (codeCache[key]) return callback(null, newCodeCache[key] = codeCache[key])
-        pygmentize({ lang: block.lang, format: 'html' }, block.code, function (err, html) {
-          if (err) return callback(err)
-          callback(null, newCodeCache[key] = html)
-        })
-      }
-    , function (err, blocks) {
-        if (err) return callback(err)
-        blocks.forEach(function (code, i) {
-          var re = new RegExp('<pre><code class="[^"]*"><CODEBLOCK id="' + (i + 1) + '"/></code></pre>')
-          html = html.replace(re, code)
-        })
-        codeCache = newCodeCache
-        callback(null, html)
-      }
-  )
+    var newCodeCache = {}
+
+    map(
+        this.blocks
+      , function (block, callback) {
+          var key = block.lang + block.code
+          if (codeCache[key])
+            return callback(null, newCodeCache[key] = codeCache[key])
+
+          pygmentize({ lang: block.lang, format: 'html' }, block.code, function (err, html) {
+            if (err)
+              return callback(err)
+
+            callback(null, newCodeCache[key] = html)
+          })
+        }
+      , function (err, blocks) {
+          if (err)
+            return callback(err)
+
+          blocks.forEach(function (code, i) {
+            var re = new RegExp('<pre><code class="[^"]*"><CODEBLOCK id="' + (i + 1) + '"/>\\n</code></pre>', 'm')
+            html = html.replace(re, code)
+          })
+
+          codeCache = newCodeCache
+          callback(null, html)
+        }
+    )
+  }
+
+  marked(this.source + '\n', rewrite.bind(this))
 
   return this
 }

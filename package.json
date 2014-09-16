@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "map-async": "~0.1.1",
-    "marked": "~0.2.5",
+    "marked": "~0.3.2",
     "pygmentize-bundled": "~2.2.0"
   },
   "keywords": [
