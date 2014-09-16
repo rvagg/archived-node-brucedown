@@ -12,7 +12,7 @@ var assert = require('assert')
         }
       , {
             input: '#Foo!\n##bar\n`bang`\n\nboom'
-          , output: '<h1>Foo!</h1><h2>bar</h2><p><code>bang</code></p><p>boom</p>'
+          , output: '<h1 id="foo-">Foo!</h1><h2 id="bar">bar</h2><p><code>bang</code></p><p>boom</p>'
         }
     ]
 
