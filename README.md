@@ -2,8 +2,8 @@
 
 **A near-perfect GitHub style Markdown to HTML converter**
 
-[![NPM](https://nodei.co/npm/pygmentize-bundled.png?downloads=true&stars=true&downloadRank=true)](https://nodei.co/npm/pygmentize-bundled/)
-[![NPM](https://nodei.co/npm-dl/pygmentize-bundled.png?months=6&height=3)](https://nodei.co/npm/pygmentize-bundled/)
+[![NPM](https://nodei.co/npm/brucedown.png?downloads=true&stars=true&downloadRank=true)](https://nodei.co/npm/brucedown/)
+[![NPM](https://nodei.co/npm-dl/brucedown.png?months=6&height=3)](https://nodei.co/npm/brucedown/)
 
 Built primarily for [Morkdown](https://github.com/rvagg/morkdown) but useful wherever you want to produce the same HTML that GitHub does when processing Markdown.
 
