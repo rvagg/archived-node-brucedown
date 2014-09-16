@@ -1,26 +1,26 @@
 {
-    "name": "brucedown"
-  , "version": "0.1.1"
-  , "description": "A near-perfect GitHub style Markdown to HTML converter"
-  , "main": "index.js"
-  , "scripts": {
+  "name": "brucedown",
+  "version": "0.1.2",
+  "description": "A near-perfect GitHub style Markdown to HTML converter",
+  "main": "index.js",
+  "scripts": {
     "test": "node ./test.js"
-  }
-  , "repository": {
-        "type": "git"
-      , "url": "https://github.com/rvagg/node-brucedown.git"
-    }
-  , "dependencies": {
-        "map-async": "~0.1.1"
-      , "marked": "~0.2.5"
-      , "pygmentize-bundled": "~2.2.0"
-    }
-  , "keywords": [
-        "markdown"
-      , "gfm"
-    ]
-  , "authors": [
-        "Rod Vagg @rvagg <rod@vagg.org> (https://github.com/rvagg)"
-    ]
-  , "license": "MIT"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rvagg/node-brucedown.git"
+  },
+  "dependencies": {
+    "map-async": "~0.1.1",
+    "marked": "~0.2.5",
+    "pygmentize-bundled": "~2.2.0"
+  },
+  "keywords": [
+    "markdown",
+    "gfm"
+  ],
+  "authors": [
+    "Rod Vagg @rvagg <rod@vagg.org> (https://github.com/rvagg)"
+  ],
+  "license": "MIT"
 }
