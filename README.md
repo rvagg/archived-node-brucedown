@@ -1,9 +1,9 @@
 # Brucedown
 
-A near-perfect GitHub style Markdown to HTML converter
-------------------------------------------------------
+**A near-perfect GitHub style Markdown to HTML converter**
 
-A very simple processor that leans heavily on dependencies to get the job done.
+[![NPM](https://nodei.co/npm/pygmentize-bundled.png?downloads=true&stars=true&downloadRank=true)](https://nodei.co/npm/pygmentize-bundled/)
+[![NPM](https://nodei.co/npm-dl/pygmentize-bundled.png?months=6&height=3)](https://nodei.co/npm/pygmentize-bundled/)
 
 Built primarily for [Morkdown](https://github.com/rvagg/morkdown) but useful wherever you want to produce the same HTML that GitHub does when processing Markdown.
 
