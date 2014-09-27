@@ -17,9 +17,10 @@ function Processor (source) {
 
 Processor.prototype.highlight = function(code, lang, callback) {
   if (typeof lang != 'string') return code
+  var id = this.blocks.length
   this.blocks.push({ code: code, lang: lang.toLowerCase() })
   process.nextTick(function () {
-    callback(null, '<CODEBLOCK id="' + this.blocks.length + '"/>')
+    callback(null, '<CODEBLOCK id="' + id + '"/>')
   }.bind(this))
 }
 
@@ -47,9 +48,10 @@ Processor.prototype.process = function (callback) {
       , function (err, blocks) {
           if (err)
             return callback(err)
+          blocks.forEach(function (_code, i) {
+            var code = _code.toString()
+              , re   = new RegExp('<pre><code class="[^"]*"><CODEBLOCK id="' + i + '"/>\\n</code></pre>', 'm')
 
-          blocks.forEach(function (code, i) {
-            var re = new RegExp('<pre><code class="[^"]*"><CODEBLOCK id="' + (i + 1) + '"/>\\n</code></pre>', 'm')
             html = html.replace(re, code)
           })
 
