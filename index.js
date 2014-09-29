@@ -16,9 +16,12 @@ function Processor (source) {
 }
 
 Processor.prototype.highlight = function(code, lang, callback) {
-  if (typeof lang != 'string') return code
+  if (typeof lang != 'string')
+    return callback(null, code)
+
   var id = this.blocks.length
   this.blocks.push({ code: code, lang: lang.toLowerCase() })
+
   process.nextTick(function () {
     callback(null, '<CODEBLOCK id="' + id + '"/>')
   }.bind(this))
@@ -48,6 +51,7 @@ Processor.prototype.process = function (callback) {
       , function (err, blocks) {
           if (err)
             return callback(err)
+
           blocks.forEach(function (_code, i) {
             var code = _code.toString()
               , re   = new RegExp('<pre><code class="[^"]*"><CODEBLOCK id="' + i + '"/>\\n</code></pre>', 'm')
