@@ -3,6 +3,7 @@
   "version": "1.0.3",
   "description": "A near-perfect GitHub style Markdown to HTML converter",
   "main": "index.js",
+  "bin": "bin.js",
   "scripts": {
     "test": "node ./test.js"
   },
