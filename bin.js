@@ -3,9 +3,14 @@
 const brucedown = require('./')
     , fs        = require('fs')
 
-function usageAndExit () {
+function usageAndExit (code) {
+  if (code == null) code = -1
   console.error('Usage: brucedown <markdown file> <output file>')
-  process.exit(-1)
+  process.exit(code)
+}
+
+if (process.argv[2] === '--help') {
+  return usageAndExit(0)
 }
 
 if (process.argv.length < 4)
